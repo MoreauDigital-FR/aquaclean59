@@ -59,6 +59,7 @@ button { font: inherit; color: inherit; background: none; border: 0; cursor: poi
   margin: 0;
 }
 .h1 { font-size: clamp(42px, 7vw, 108px); }
+.hero .h1 { font-size: clamp(38px, min(7vw, 11vh), 108px); }
 .h2 { font-size: clamp(34px, 5.2vw, 72px); }
 .h3 { font-size: clamp(22px, 2.2vw, 28px); line-height: 1; }
 .thin { font-weight: 300; font-stretch: 100%; }
@@ -182,10 +183,15 @@ button { font: inherit; color: inherit; background: none; border: 0; cursor: poi
 
 /* ---------- hero ---------- */
 .hero {
-  position: relative; min-height: min(92vh, 920px); min-height: min(92svh, 920px);
+  position: relative;
+  /* plein écran à l'ouverture : on retire le header (72px) et le bandeau promo */
+  min-height: calc(100vh - var(--hero-top, 72px));
+  min-height: calc(100svh - var(--hero-top, 72px));
+  /* hauteur visible réelle (barre d'adresse mobile comprise) : pas de blanc en bas */
+  min-height: calc(100dvh - var(--hero-top, 72px));
   display: flex; align-items: flex-end;
   overflow: hidden; isolation: isolate;
-  padding: 140px 0 clamp(40px, 6vw, 72px);
+  padding: clamp(40px, 6vh, 72px) 0 clamp(28px, 4vh, 48px);
 }
 .hero-media { position: absolute; inset: 0; z-index: -2; }
 .hero-media video, .hero-media img { width: 100%; height: 100%; object-fit: cover; }
@@ -195,9 +201,9 @@ button { font: inherit; color: inherit; background: none; border: 0; cursor: poi
     linear-gradient(180deg, rgba(11,13,16,.55) 0%, rgba(11,13,16,.15) 35%, rgba(11,13,16,.85) 78%, var(--ink) 100%),
     linear-gradient(90deg, rgba(11,13,16,.75) 0%, rgba(11,13,16,0) 65%);
 }
-.hero .label { color: rgba(255,255,255,.8); margin-bottom: 28px; }
+.hero .label { color: rgba(255,255,255,.8); margin-bottom: clamp(16px, 2.5vh, 28px); }
 .hero h1 { max-width: 15ch; }
-.hero-bottom { display: grid; grid-template-columns: 1fr auto; align-items: end; gap: 40px; margin-top: 40px; }
+.hero-bottom { display: grid; grid-template-columns: 1fr auto; align-items: end; gap: 40px; margin-top: clamp(20px, 3.5vh, 40px); }
 .hero-bottom .lead { color: rgba(236,238,241,.82); }
 .hero-actions { display: flex; flex-wrap: wrap; gap: 12px; }
 @media (max-width: 860px) { .hero-bottom { grid-template-columns: 1fr; } }
@@ -205,7 +211,7 @@ button { font: inherit; color: inherit; background: none; border: 0; cursor: poi
 .facts {
   display: grid; grid-template-columns: repeat(4, 1fr);
   border-top: 1px solid var(--line);
-  margin-top: clamp(48px, 7vw, 80px);
+  margin-top: clamp(28px, 5vh, 72px);
 }
 .fact { padding: 22px 24px 4px 0; }
 .fact + .fact { padding-left: 24px; border-left: 1px solid var(--line); }
@@ -498,25 +504,30 @@ fieldset.field { border: 0; margin: 0; padding: 0; }
 
 /* hero mobile : épuré */
 @media (max-width: 760px) {
-  .hero {
-    min-height: calc(100vh - 72px - var(--promo-h, 0px));
-    min-height: calc(100svh - 72px - var(--promo-h, 0px));
-    padding: 48px 0 24px;
-  }
+  .hero { padding: 24px 0 20px; }
   .hero::after {
     background: linear-gradient(180deg, rgba(11,13,16,.35) 0%, rgba(11,13,16,.55) 40%, rgba(11,13,16,.92) 75%, var(--ink) 100%);
   }
   .hero .label { display: none; }
-  .hero h1 { font-size: clamp(38px, 11vw, 52px); }
-  .hero-bottom { margin-top: 18px; gap: 22px; }
-  .hero-bottom .lead { font-size: 16px; }
+  .hero .h1 { font-size: clamp(36px, min(11.5vw, 6.2vh), 56px); }
+  .hero-bottom { margin-top: 16px; gap: 18px; }
+  .hero-bottom .lead { font-size: 18px; color: rgba(236,238,241,.92); }
   .hero-actions { display: grid; grid-template-columns: 1.3fr 1fr; gap: 8px; }
-  .hero-actions .btn { justify-content: center; padding: 0 14px; height: 52px; }
-  .facts { margin-top: 28px; }
+  .hero-actions .btn { justify-content: center; padding: 0 14px; height: 56px; font-size: 17px; }
+  .facts { margin-top: 20px; }
   .fact, .fact + .fact { padding: 14px 12px 12px 0; }
   .fact:nth-child(even) { padding-left: 14px; }
-  .fact b { font-size: 14px; font-stretch: 105%; }
+  .fact b { font-size: 16px; font-stretch: 100%; }
   .fact span { display: none; }
+  /* textes du haut plus lisibles sur téléphone */
+  .promo-bar { font-size: 14.5px; }
+  .brand-name { font-size: 19px; }
+  .brand-sub { font-size: 11.5px; letter-spacing: .06em; color: rgba(236,238,241,.75); }
+}
+@media (max-width: 370px) {
+  .brand-name { font-size: 17px; }
+  .brand-sub { font-size: 10px; letter-spacing: .04em; }
+  .fact b { font-size: 14.5px; }
 }
 
 .mt-s { margin-top: 20px; } .mt-m { margin-top: 40px; } .mt-l { margin-top: 72px; }

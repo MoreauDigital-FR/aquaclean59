@@ -40,11 +40,21 @@
   window.addEventListener("resize", onReveal);
   reveal();
 
-  /* hauteur du bandeau promo, pour un hero plein écran sur mobile */
-  const promo = document.querySelector(".promo-bar");
-  const setPromo = () => root.style.setProperty("--promo-h", (promo ? promo.offsetHeight : 0) + "px");
+  /* hauteur occupée au-dessus du hero (bandeau promo + header), pour un hero qui remplit exactement l'écran.
+     On mesure la position du hero plutôt que le header : Safari compte le menu mobile caché dans sa hauteur. */
+  const hero = document.querySelector(".hero");
+  const setPromo = () => {
+    if (!hero) return;
+    root.style.setProperty("--hero-top", Math.round(hero.getBoundingClientRect().top + window.scrollY) + "px");
+  };
   setPromo();
   window.addEventListener("resize", setPromo);
+  window.addEventListener("load", setPromo);
+  /* Safari mesure parfois avant la fin de la mise en page : on recalcule dès que le header ou le bandeau change de taille */
+  if ("ResizeObserver" in window) {
+    const ro = new ResizeObserver(setPromo);
+    document.querySelectorAll(".promo-bar, .site-header").forEach((el) => ro.observe(el));
+  }
 
   /* vidéo hero : pas d'autoplay si mouvement réduit ou économie de données */
   const heroVideo = document.querySelector("[data-hero-video]");
