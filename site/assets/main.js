@@ -40,6 +40,12 @@
   window.addEventListener("resize", onReveal);
   reveal();
 
+  /* hauteur du bandeau promo, pour un hero plein écran sur mobile */
+  const promo = document.querySelector(".promo-bar");
+  const setPromo = () => root.style.setProperty("--promo-h", (promo ? promo.offsetHeight : 0) + "px");
+  setPromo();
+  window.addEventListener("resize", setPromo);
+
   /* vidéo hero : pas d'autoplay si mouvement réduit ou économie de données */
   const heroVideo = document.querySelector("[data-hero-video]");
   if (heroVideo) {

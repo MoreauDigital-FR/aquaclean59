@@ -498,7 +498,11 @@ fieldset.field { border: 0; margin: 0; padding: 0; }
 
 /* hero mobile : épuré */
 @media (max-width: 760px) {
-  .hero { min-height: calc(100svh - 120px); padding: 48px 0 28px; }
+  .hero {
+    min-height: calc(100vh - 72px - var(--promo-h, 0px));
+    min-height: calc(100svh - 72px - var(--promo-h, 0px));
+    padding: 48px 0 24px;
+  }
   .hero::after {
     background: linear-gradient(180deg, rgba(11,13,16,.35) 0%, rgba(11,13,16,.55) 40%, rgba(11,13,16,.92) 75%, var(--ink) 100%);
   }
