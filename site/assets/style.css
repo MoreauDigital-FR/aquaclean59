@@ -475,6 +475,9 @@ fieldset.field { border: 0; margin: 0; padding: 0; }
 .footer-grid a:hover { color: var(--aqua); }
 .footer-brand p { color: var(--text-dim); font-size: 15px; max-width: 34ch; margin: 18px 0 0; }
 .footer-legal { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 12px; margin-top: 64px; padding-top: 24px; border-top: 1px solid var(--line); font-size: 13px; color: var(--text-dim); }
+.footer-legal .credit { color: var(--text-dim); transition: color .2s; }
+.footer-legal .credit b { color: var(--text); font-weight: 600; }
+.footer-legal .credit:hover, .footer-legal .credit:hover b { color: var(--aqua); }
 @media (max-width: 860px) { .footer-grid { grid-template-columns: 1fr 1fr; } .footer-brand { grid-column: 1 / -1; } }
 
 /* barre d'appel mobile */
