@@ -182,7 +182,7 @@ button { font: inherit; color: inherit; background: none; border: 0; cursor: poi
 
 /* ---------- hero ---------- */
 .hero {
-  position: relative; min-height: min(92svh, 920px);
+  position: relative; min-height: min(92vh, 920px); min-height: min(92svh, 920px);
   display: flex; align-items: flex-end;
   overflow: hidden; isolation: isolate;
   padding: 140px 0 clamp(40px, 6vw, 72px);

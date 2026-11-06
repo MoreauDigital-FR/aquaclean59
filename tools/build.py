@@ -1,4 +1,7 @@
 import pathlib
+import time
+
+VER = time.strftime("%Y%m%d%H%M")
 
 OUT = pathlib.Path(__file__).resolve().parent.parent / "site"
 TEL = "tel:+33757468512"
@@ -42,7 +45,7 @@ def page(file, title, desc, body, promo=True):
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,300..900&family=Geist:wght@400;500;600;700&family=Geist+Mono:wght@500&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="assets/style.css">
+<link rel="stylesheet" href="assets/style.css?v={VER}">
 </head>
 <body>
 {promo_html}
@@ -90,7 +93,7 @@ def page(file, title, desc, body, promo=True):
   <a class="btn btn-primary" href="{TEL}">{I['phone']}Appeler</a>
   <a class="btn btn-ghost" href="contact.html">{I['msg']}Devis</a>
 </div>
-<script src="assets/main.js" defer></script>
+<script src="assets/main.js?v={VER}" defer></script>
 </body>
 </html>
 """
