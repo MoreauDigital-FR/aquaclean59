@@ -153,17 +153,18 @@ home = f"""
     <span class="label">Pecquencourt · Nord · Pas-de-Calais · Belgique</span>
     <h1 class="display h1">Votre voiture comme neuve, <span class="thin">sans bouger de chez vous.</span></h1>
     <div class="hero-bottom">
-      <p class="lead">Maxime vient avec son camion-atelier, à votre domicile ou sur votre lieu de travail. Eau, électricité, produits&nbsp;: tout est à bord. Vous n’avez qu’à donner les clés.</p>
+      <p class="lead hide-m">Maxime vient avec son camion-atelier, à votre domicile ou sur votre lieu de travail. Eau, électricité, produits&nbsp;: tout est à bord. Vous n’avez qu’à donner les clés.</p>
+      <p class="lead show-m">Lavage à domicile ou sur votre lieu de travail, autour de Pecquencourt.</p>
       <div class="hero-actions">
         <a class="btn btn-primary" href="{TEL}">{I['phone']}{TEL_TXT}</a>
-        <a class="btn btn-ghost" href="voitures.html">Voir les tarifs</a>
+        <a class="btn btn-ghost" href="voitures.html"><span class="hide-m">Voir les tarifs</span><span class="show-m">Tarifs</span></a>
       </div>
     </div>
     <div class="facts">
       <div class="fact"><b>Dès 80 €</b><span>Intérieur complet, petite voiture</span></div>
       <div class="fact"><b>100 % autonome</b><span>Pas besoin de prise ni d’eau</span></div>
-      <div class="fact"><b>0 € déplacement</b><span>Jusqu’à 25 km de Pecquencourt</span></div>
-      <div class="fact"><b>100 % recommandé</b><span>16 avis Facebook, 5★ sur Google</span></div>
+      <div class="fact"><b>Trajet offert</b><span>Jusqu’à 25 km de Pecquencourt</span></div>
+      <div class="fact"><b>5★ clients</b><span>16 avis, 100 % recommandé</span></div>
     </div>
   </div>
 </section>
